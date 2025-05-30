@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply text-white font-sans;
+    background-color: #0c081f;
+    background-image: url('/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  /* make sure any bg-cyvexBg utility is transparent */
+  .bg-cyvexBg {
+    background-color: transparent !important;
+  }
+}
+
+@layer components {
+  /* Hero background: soft two-stop gradient */
+  .hero-bg {
+    background: linear-gradient(
+      to bottom right,
+      rgba(15, 12, 41, 0.8),
+      rgba(50, 35, 80, 0.6)
+    );
+  }
+
+  /* Primary button style */
+  .btn-primary {
+    @apply px-6 py-3 rounded-full bg-cyvexPurple text-white font-semibold transition transform;
+  }
+  .btn-primary:hover {
+    @apply scale-105;
+  }
+  .btn-primary:active {
+    @apply translate-y-1;
+  }
+}
