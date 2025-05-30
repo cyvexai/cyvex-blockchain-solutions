@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+
 import { ClipboardCopy } from 'lucide-react';
 import Header from '../components/Header';
 import AnalyticsPreview from '../components/AnalyticsPreview';

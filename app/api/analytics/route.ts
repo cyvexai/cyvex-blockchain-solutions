@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     // 1) CoinGecko: top Solana token by volume
     const cgRes = await fetch(

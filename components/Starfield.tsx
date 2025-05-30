@@ -26,7 +26,7 @@ export default function Starfield() {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let star of stars) {
+      for (const star of stars) {
         star.x += star.dx;
         star.y += star.dy;
         if (star.x < 0 || star.x > canvas.width) star.dx *= -1;

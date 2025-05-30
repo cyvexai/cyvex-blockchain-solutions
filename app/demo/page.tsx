@@ -6,11 +6,6 @@ import Card from "../../components/Card";
 import { Ubuntu } from "next/font/google";
 import {
   User,
-  TrendingUp,
-  PieChart,
-  AlertCircle,
-  Bell,
-  ClipboardCopy,
   Zap,
   BarChart2,
 } from "lucide-react";
