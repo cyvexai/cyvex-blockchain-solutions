@@ -4,7 +4,6 @@ const nextConfig = {
     // ← this tells Next.js: run ESLint in `next dev` but IGNORE errors in `next build`
     ignoreDuringBuilds: true,
   },
-  output: 'export'
 }
 
 module.exports = nextConfig
