@@ -1,4 +1,11 @@
-import type { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+
+interface AnalyticsData {
+  volume: number;
+  topToken: string;
+  tps: number;
+  slot: number;
+}
 
 export async function GET(_req: NextRequest) {
   try {
@@ -8,9 +15,11 @@ export async function GET(_req: NextRequest) {
     );
     if (!cgRes.ok) throw new Error('CoinGecko fetch failed');
     const cgJson = await cgRes.json();
-    if (!cgJson.length) throw new Error('No CoinGecko data');
-    const top = cgJson[0];
-    
+    if (!Array.isArray(cgJson) || cgJson.length === 0) {
+      throw new Error('No CoinGecko data');
+    }
+    const top = cgJson[0] as { total_volume: number; name: string };
+
     // 2) Solana RPC: performance samples
     const rpcUrl = 'https://api.mainnet-beta.solana.com';
     const perfRes = await fetch(rpcUrl, {
@@ -25,9 +34,9 @@ export async function GET(_req: NextRequest) {
     });
     if (!perfRes.ok) throw new Error('RPC perf fetch failed');
     const perfJson = await perfRes.json();
-    const sample = perfJson.result[0];
+    const sample = (perfJson.result as Array<{ numTransactions: number; samplePeriodSecs: number }>)[0];
     const tps = sample.numTransactions / sample.samplePeriodSecs;
-    
+
     // 3) Solana RPC: current slot
     const slotRes = await fetch(rpcUrl, {
       method: 'POST',
@@ -40,24 +49,18 @@ export async function GET(_req: NextRequest) {
     });
     if (!slotRes.ok) throw new Error('RPC slot fetch failed');
     const slotJson = await slotRes.json();
-    const slot = slotJson.result;
+    const slot = slotJson.result as number;
 
-    const result = {
+    const result: AnalyticsData = {
       volume: top.total_volume,
       topToken: top.name,
       tps,
       slot,
     };
 
-    return new Response(JSON.stringify(result), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-  } catch (err: any) {
-    return new Response(
-      JSON.stringify({ error: err.message || 'Unknown error' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return NextResponse.json(result);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

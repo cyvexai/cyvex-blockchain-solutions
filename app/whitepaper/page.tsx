@@ -2,7 +2,6 @@
 
 import Header from '../../components/Header';
 import { Ubuntu } from 'next/font/google';
-import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import Card from '../../components/Card';
 import TokenomicsChart from '../../components/TokenomicsChart';
@@ -65,7 +64,7 @@ export default function Whitepaper() {
               <Card>
                 <h2 className="text-2xl font-semibold text-white mb-2">1. Introduction</h2>
                 <p className="text-gray-300 leading-relaxed">
-                  Cyvex Blockchain Solutions is a cutting-edge AI-powered analytics platform built exclusively for the Solana blockchain. It provides real-time wallet tracking, token behavior analysis, and AI-driven insights to give traders, degens, and developers a competitive edge in a rapidly evolving ecosystem. To support this platform, we are launching CyvexAI ($CYVEX) — a utility and governance token designed to power user access, incentivize contributions, and decentralize the platform’s evolution.
+                  Cyvex Blockchain Solutions is a cutting-edge AI-powered analytics platform built exclusively for the Solana blockchain. It provides real-time wallet tracking, token behavior analysis, and AI-driven insights to give traders, degens, and developers a competitive edge in a rapidly evolving ecosystem. To support this platform, we are launching CyvexAI ($CYVEX) — a utility and governance token designed to power user access, incentivize contributions, and decentralize the platform&apos;s evolution.
                 </p>
               </Card>
             </section>
@@ -166,7 +165,7 @@ export default function Whitepaper() {
                   <h3 className="text-xl font-semibold text-white mb-1">Emilia Balkova</h3>
                   <p className="text-cyvexBlue font-medium mb-2">Head of Research</p>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Expert in AI model development, wallet behaviour analysis, and social signal fusion. Strong background in machine learning and data science, leading research efforts that power Cyvex's predictive algorithms and smart money scoring systems.
+                    Expert in AI model development, wallet behaviour analysis, and social signal fusion. Strong background in machine learning and data science, leading research efforts that power Cyvex&apos;s predictive algorithms and smart money scoring systems.
                   </p>
                 </Card>
               </div>

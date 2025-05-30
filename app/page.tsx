@@ -23,7 +23,7 @@ export default function Home() {
     { id: 'portfolio',  icon: <PieChart className="w-8 h-8 text-cyvexPurple mb-4" />, title: 'Portfolio Analytics',           description: 'Breakdown of wallet holdings by token type, sector (DeFi, NFT, meme), and performance over time.' },
     { id: 'predictive', icon: <TrendingUp className="w-8 h-8 text-cyvexPurple mb-4" />, title: 'Predictive Token Trends',      description: 'Forecast trending tokens using social signals + wallet activity + liquidity influx.' },
     { id: 'liquidity',  icon: <Droplet className="w-8 h-8 text-cyvexPurple mb-4" />, title: 'Liquidity Pool Movements',      description: 'Detect when liquidity is added, removed, or manipulated (LP rug warnings).' },
-    { id: 'api',        icon: <Code className="w-8 h-8 text-cyvexPurple mb-4" />, title: 'API Access',                   description: 'For devs building bots or dashboards using Cyvex’s AI-enhanced Solana analytics.' },
+    { id: 'api',        icon: <Code className="w-8 h-8 text-cyvexPurple mb-4" />, title: 'API Access',                   description: 'For devs building bots or dashboards using Cyvex AI-enhanced Solana analytics.' },
   ];
 
   return (

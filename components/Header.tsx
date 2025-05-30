@@ -9,9 +9,15 @@ const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["400", "700"] });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "700"] });
 
 declare global {
-  interface Window {
-    solana?: any;
+  interface PhantomProvider {
+    isPhantom?: boolean;
+    connect: (opts?: { onlyIfTrusted?: boolean }) => Promise<{ publicKey: { toString(): string } }>;
+    on: (evt: string, cb: () => void) => void;
+    publicKey: { toString(): string };
   }
+  interface Window {
+    solana?: PhantomProvider;
+  }  
 }
 
 export default function Header() {
