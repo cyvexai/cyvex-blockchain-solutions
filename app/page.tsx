@@ -171,6 +171,17 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* —— Get Started Button —— */}
+        <div className="text-center mt-12">
+          <button
+            onClick={() => window.dispatchEvent(new Event("openDashboard"))}
+            className="px-8 py-4 bg-cyvexPurple hover:bg-cyvexBlue text-white rounded-full font-semibold transition"
+          >
+            Get Started
+          </button>
+        </div>
+
       </main>
     </>
   );
