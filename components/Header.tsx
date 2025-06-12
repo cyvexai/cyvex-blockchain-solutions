@@ -81,7 +81,7 @@ export default function Header() {
             Home
           </Link>
           <Link
-            href="/demo"
+            href="/dashboard"
             className={`${ubuntu.className} text-white hover:text-cyvexPurple transition`}
           >
             Dashboard
