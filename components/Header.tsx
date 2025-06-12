@@ -84,7 +84,7 @@ export default function Header() {
             href="/demo"
             className={`${ubuntu.className} text-white hover:text-cyvexPurple transition`}
           >
-            Demo
+            Dashboard
           </Link>
           <Link
             href="/token-distribution"
