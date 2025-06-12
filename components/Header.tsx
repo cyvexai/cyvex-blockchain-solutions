@@ -81,10 +81,10 @@ export default function Header() {
             Home
           </Link>
           <Link
-            href="/dashboard"
+            href="/demo"
             className={`${ubuntu.className} text-white hover:text-cyvexPurple transition`}
           >
-            Dashboard
+            Demo
           </Link>
           <Link
             href="/token-distribution"
