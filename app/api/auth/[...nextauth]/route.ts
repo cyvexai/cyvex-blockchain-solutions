@@ -1,19 +1,16 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
-export const authOptions = {
+const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    // ...any other providers
+    // …any other providers
   ],
-  // any other NextAuth options (callbacks, pages, etc.)
-};
+  // …any other NextAuth.js options (callbacks, pages, etc.)
+});
 
-// create the handler
-const handler = NextAuth(authOptions);
-
-// export it for both GET and POST
+// App-Router API routes must use named exports for each HTTP method
 export { handler as GET, handler as POST };
