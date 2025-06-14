@@ -129,10 +129,10 @@ export default function Header() {
               Whitepaper
             </Link>
             <Link
-              href="#how-it-works"
+              href="/pricing"
               className={`${ubuntu.className} text-white hover:text-cyvexPurple transition`}
             >
-              How It Works
+              Pricing
             </Link>
           </nav>
 
