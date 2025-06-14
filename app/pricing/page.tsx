@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
 import { Ubuntu } from "next/font/google";
@@ -40,17 +41,26 @@ export default function Pricing() {
     },
   ];
 
-  // ← NEW: cart & payment state
-  const [selectedPlan, setSelectedPlan] = useState<typeof plans[0] | null>(null);
-  const [paymentMethod, setPaymentMethod] = useState<"crypto" | "stripe">("crypto");
+  const [selectedPlan, setSelectedPlan] =
+    useState<typeof plans[0] | null>(null);
+  const [paymentMethod, setPaymentMethod] = useState<"crypto" | "stripe">(
+    "crypto"
+  );
+
+  // NEW: modal state for Free sign-up
+  const [showSignUp, setShowSignUp] = useState(false);
 
   const handleSelect = (plan: typeof plans[0]) => {
     setSelectedPlan(plan);
   };
 
-  // ← UPDATED: always show “Currently Unavailable”
   const handleCheckout = () => {
-    alert("Currently Unavailable");
+    if (!selectedPlan) return;
+    if (selectedPlan.name === "Free") {
+      setShowSignUp(true);
+    } else {
+      alert("Currently Unavailable");
+    }
   };
 
   return (
@@ -106,7 +116,7 @@ export default function Pricing() {
           ))}
         </section>
 
-        {/* ← NEW: Cart & Checkout */}
+        {/* Cart & Checkout */}
         {selectedPlan && (
           <section className="max-w-7xl mx-auto space-y-6">
             <Card className="p-6">
@@ -166,7 +176,7 @@ export default function Pricing() {
           </section>
         )}
 
-        {/* ← Payment Methods Section ↓ */}
+        {/* Payment Methods */}
         <section className="max-w-7xl mx-auto space-y-6 px-6">
           <h2
             className={`
@@ -199,6 +209,41 @@ export default function Pricing() {
           </div>
         </section>
       </main>
+
+      {/* ---- Sign-Up Modal for Free Plan ---- */}
+      {showSignUp && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-60">
+          <div className="bg-gray-900 bg-opacity-80 backdrop-blur-xl rounded-2xl p-8 w-full max-w-sm mx-4 space-y-6 shadow-2xl">
+            <h3 className="text-2xl font-bold text-white text-center">
+              Activate Your Free Plan
+            </h3>
+            <p className="text-gray-300 text-center">
+              Sign up with one of the following to continue:
+            </p>
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => signIn("google")}
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-200 transition shadow"
+              >
+                {/* You can swap in an SVG or Image icon here */}
+                Sign in with Google
+              </button>
+              <button
+                onClick={() => signIn("linkedin")}
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-full font-medium hover:bg-blue-600 transition shadow"
+              >
+                Sign in with LinkedIn
+              </button>
+            </div>
+            <button
+              onClick={() => setShowSignUp(false)}
+              className="block mx-auto text-gray-400 hover:text-gray-200 mt-4"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
