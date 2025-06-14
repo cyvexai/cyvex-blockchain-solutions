@@ -1,22 +1,19 @@
-import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
-import LinkedInProvider from "next-auth/providers/linkedin"
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    LinkedInProvider({
-      clientId: process.env.LINKEDIN_CLIENT_ID!,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET!
-    })
+    // ...any other providers
   ],
-  // any other NextAuth config (callbacks, pages, etc)
-}
+  // any other NextAuth options (callbacks, pages, etc.)
+};
 
-const handler = NextAuth(authOptions)
+// create the handler
+const handler = NextAuth(authOptions);
 
-// re-export the NextAuth handler as named exports
-export { handler as GET, handler as POST }
+// export it for both GET and POST
+export { handler as GET, handler as POST };
