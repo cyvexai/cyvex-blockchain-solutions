@@ -13,7 +13,7 @@ export default function Footer() {
           <ul className="space-y-2">
             {[
               ["/", "Home"],
-              ["/demo", "Demo"],
+              ["/dashboard", "Dashboard"],
               ["/token-distribution", "Token Distribution"],
               ["/whitepaper", "Whitepaper"],
             ].map(([href, label]) => (

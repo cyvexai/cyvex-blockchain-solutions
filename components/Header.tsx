@@ -71,7 +71,7 @@ export default function Header() {
   // ---- NEW handlers for popup ----
   const handleDemo = () => {
     setShowModal(false);
-    router.push("/demo");
+    router.push("/dashboard");
   };
 
   const handleBetaSubmit = () => {
@@ -157,7 +157,7 @@ export default function Header() {
                     onClick={handleDemo}
                     className="px-6 py-2 bg-cyvexPurple rounded-full text-white hover:bg-cyvexBlue transition"
                   >
-                    Demo
+                    Dashboard
                   </button>
                   <button
                     onClick={() => {
