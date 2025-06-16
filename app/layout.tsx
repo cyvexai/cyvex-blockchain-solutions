@@ -3,7 +3,7 @@ import { Ubuntu, Space_Grotesk } from 'next/font/google'
 import Starfield from '../components/Starfield'
 import CursorTracker from '../components/CursorTracker'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
+import ConditionalFooter from "../components/ConditionalFooter";
 
 const ubuntu = Ubuntu({
   subsets: ['latin'],
@@ -43,8 +43,9 @@ export default function RootLayout({
         {/* main site content */}
         <main className="relative z-10">{children}</main>
 
-        {/* global footer */}
-        <Footer />
+        
+        {/* footer on all pages except /dashboard */}
+        <ConditionalFooter />
       </body>
     </html>
   )
